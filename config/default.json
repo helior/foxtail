@@ -1,6 +1,6 @@
 {
   "express": {
-    "port": 8001,
+    "port": 3001,
     "host": "local.foxtail.com"
   }
 }
