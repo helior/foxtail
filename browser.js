@@ -6,5 +6,5 @@ var Router = require('react-router');
 var routes = require('./routes.jsx');
 
 Router.run(routes, Router.HistoryLocation, function(Handler) {
-  React.render(React.createElement(Handler, null), window.document.getElementById('app'));
+  React.render(React.createElement(Handler, null), window.document.getElementById('page'));
 });
