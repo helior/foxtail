@@ -3,12 +3,11 @@ node_js:
 - '0.12'
 script: true
 after_success:
-  - echo "myvar: ${VAR_X}!!"
-  - echo "othervar: $VAR_X!!"
-  - echo something/${VAR_X}/nina
-  - env
+- env
+- git config --global user.name "helior"
+- git config --global user.email "me@helior.info"
+- npm version patch
+- git push https://${GH_OAUTH_TOKEN}@github.com/helior/foxtail
 env:
   global:
-  - VAR_X=foo
-  - VAR_Y=bar
-  - secure: fraen6XFugn2P5jufxQQGaQd7N21j1zoCS+vC5Qod08uzHMx6rKYbVCt4INisS+KrkWncNy27XgHMtMOH0Qz1M5BmG8TcAneoGQGp0HweblgzBBoMSvopw8mdn+nFfV2+WdYJYI9FgOO9HlbeeM27LD4elGt05yVzLfKoHswP0E=
+    secure: HREtLIzmlc6tEWd6BklU5sZ0MmYVBSMlG7KAArbcm4RPLzXxlGxOB9JilHEs0lga5yoi4QtmePEzKM1EF1RUZ8DQ5ANqHh90DCB1ybSDCfMUxAH8CNMc6gWC+86CrGh5YANjg3ZJ0wdYhbwdjvcd1hbBnZVeGm27dYjyMI+WGYk=
