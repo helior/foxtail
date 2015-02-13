@@ -3,7 +3,9 @@ node_js:
 - '0.12'
 script: true
 after_success:
-  - echo bling bling
+  - echo "myvar: ${VAR_X}!!"
+  - echo "othervar: $VAR_X!!"
+  - echo something/${VAR_X}/nina
   - env
 env:
   global:
