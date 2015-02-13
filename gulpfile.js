@@ -13,6 +13,10 @@ var stylish = require('jshint-stylish');
 var tasks = require('gulp-task-listing');
 var webpack = require('gulp-webpack');
 
+var compass = require('gulp-compass');
+var paths = require('compass-options').paths();
+var autoprefixer = require('gulp-autoprefixer');
+
 /******************************************************************************/
 /* Utility */
 /******************************************************************************/
@@ -36,6 +40,34 @@ gulp.task('lint', function () {
 });
 
 gulp.task('test', ['lint']);
+
+/******************************************************************************/
+/* Styles */
+/******************************************************************************/
+gulp.task('compass', function () {
+  return gulp.src(paths.sass + '/**/*.scss')
+    .pipe(compass({
+      config_file: 'config.rb',
+      bundle_exec: true,
+      sourcemap: false,
+      time: true,
+      css: paths.css,
+      sass: paths.sass,
+      image: paths.img
+    }))
+    .on('error', function() {
+      // Compass prints the error, so only have to log that we handled it.
+      console.log('Error caught. Continuing...');
+      this.emit('end');
+    })
+    .pipe(gulp.dest(paths.css));
+});
+
+gulp.task('css', ['compass'], function () {
+  return gulp.src(paths.css + '/main.css')
+    .pipe(autoprefixer('last 2 versions', '> 5%'))
+    .pipe(gulp.dest(paths.css));
+});
 
 /******************************************************************************/
 /* Compiling */
