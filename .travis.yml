@@ -6,6 +6,7 @@ after_success:
 - env
 - git config --global user.name "helior"
 - git config --global user.email "me@helior.info"
+- git config --global push.default matching
 - npm version patch
 - git push https://${GH_OAUTH_TOKEN}@github.com/helior/foxtail
 env:
