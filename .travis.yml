@@ -7,7 +7,7 @@ after_success:
 - git config --global user.name "helior"
 - git config --global user.email "me@helior.info"
 - git config --global push.default matching
-- npm version patch -m "v%s [skip ci]"
+- npm version patch -m $'v%s\n\n[skip ci]'
 - git push https://${GH_OAUTH_TOKEN}@github.com/helior/foxtail HEAD:dev --tag
 env:
   global:
