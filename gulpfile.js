@@ -69,6 +69,10 @@ gulp.task('css', ['compass'], function () {
     .pipe(gulp.dest(paths.css));
 });
 
+gulp.task('watch', function () {
+  gulp.watch(paths.sass + '/**/*.scss', ['css']);
+});
+
 /******************************************************************************/
 /* Compiling */
 /******************************************************************************/
@@ -100,3 +104,5 @@ gulp.task('serve', function () {
       console.log('restarted!');
     });
 });
+
+gulp.task('default', ['serve', 'watch']);
