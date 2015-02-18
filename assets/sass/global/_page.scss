@@ -1,0 +1,19 @@
+body {
+  font: 400 18px "Dosis", sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  color: #000;
+  background: #555;
+  min-width: 320px;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  max-width: 1125px;
+  width: 100%;
+  padding: 0 25px;
+  margin: 0 auto;
+}
