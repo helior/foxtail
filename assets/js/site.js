@@ -1,3 +1,5 @@
+var NProgress = require('./nprogress.js');
+
 NProgress.configure({
   minimum: 0.2,
   speed: 200,

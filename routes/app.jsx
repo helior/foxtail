@@ -1,9 +1,9 @@
 "use strict";
 
-/* global FastClick */
 var React = require('react/addons');
 var RouteHandler = require('react-router').RouteHandler;
 var Header = require('../components/header.jsx');
+var FastClick = (typeof window !== 'undefined') ? require('fastclick') : {};
 
 var App = React.createClass({
   componentDidMount() {
