@@ -1,0 +1,8 @@
+/* Variables */
+
+/* Media Queries */
+$break-medium: "768px";
+$break-large: "1024px";
+
+$breakpoint-medium: "only screen and (min-width : #{$break-medium})";
+$breakpoint-large: "only screen and (min-width : #{$break-large})";
