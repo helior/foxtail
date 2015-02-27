@@ -71,9 +71,7 @@ var Header = React.createClass({
     return <div className="header-element">
       <div id="menu-close-button" className={cx({'menu-close-button': true, 'active': this.state.activeMenu})} ref="menuClose">
         <div className="container">
-          <div className="col-md-100">
-            <a id="menu-close" className="menu-close icon-close" href="#" onClick={this.handleCloseMenu}></a>
-          </div>
+          <a id="menu-close" className="menu-close icon-close" href="#" onClick={this.handleCloseMenu}></a>
         </div>
       </div>
 
@@ -93,14 +91,10 @@ var Header = React.createClass({
       <header id="header" className="header">
         <div className="header-real">
           <div className="container">
-            <div className="col-md-100">
-              <h1 className="logo">
-                <Link to="home">Foxtail</Link>
-              </h1>
-              <a className="menu-open" href="#" onClick={this.handleOpenMenu}>
-                <span></span>
-              </a>
-            </div>
+            <Link to="home">Foxtail</Link>
+            <a className="menu-open" href="#" onClick={this.handleOpenMenu}>
+              <span></span>
+            </a>
           </div>
         </div>
       </header>
