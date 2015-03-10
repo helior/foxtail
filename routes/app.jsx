@@ -32,6 +32,11 @@ var App = React.createClass({
         title: 'FAQ',
         href: 'faq',
         subTitle: 'Frequently Answered Questions...'
+      },
+      {
+        title: 'TEST',
+        href: 'test',
+        subTitle: 'Test testy test.'
       }
     ];
 
