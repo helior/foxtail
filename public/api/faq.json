@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "category": "First Category",
+      "questions": ["How do I find FAQ 1?"],
+      "answer": "Irony street art umami, stumptown deep v meditation scenester brunch aesthetic church-key yr. Gentrify fanny pack keytar butcher, squid authentic chambray 90's organic ethical distillery kale chips Intelligentsia vegan."
+    },
+    {
+      "id": 2,
+      "category": "First Category",
+      "questions": ["How do I find FAQ 2?"],
+      "answer": "Tumblr Odd Future Pinterest, keytar tilde keffiyeh Carles wolf Portland 3 wolf moon YOLO. Vice gastropub fingerstache small batch occupy."
+    },
+    {
+      "id": 3,
+      "category": "First Category",
+      "questions": ["How do I find FAQ 2?"],
+      "answer": "Bespoke cray gentrify taxidermy, retro Helvetica fanny pack Vice letterpress tattooed. Tousled art party kale chips single-origin coffee DIY shabby chic XOXO, Vice occupy flannel keffiyeh raw denim asymmetrical drinking vinegar."
+    },
+    {
+      "id": 4,
+      "category": "First Category",
+      "questions": ["How do I find FAQ 2?"],
+      "answer": "Tilde gastropub gluten-free, cred fixie cronut retro food truck actually direct trade fanny pack meditation Williamsburg."
+    },
+    {
+      "id": 5,
+      "category": "First Category",
+      "questions": ["How do I find FAQ 2?"],
+      "answer": "Pinterest umami four loko, typewriter YOLO distillery forage. 8-bit Thundercats aesthetic, cred Brooklyn selvage kitsch deep v banjo kogi blog tote bag YOLO vegan."
+    },
+    {
+      "id": 6,
+      "category": "First Category",
+      "questions": ["How do I find FAQ 2?"],
+      "answer": "Fixie photo booth organic Bushwick heirloom. +1 small batch disrupt, selvage taxidermy tilde hella try-hard tote bag. Organic bicycle rights food truck, literally paleo Vice Carles trust fund Truffaut pop-up Godard ethical."
+    },
+    {
+      "id": 7,
+      "category": "First Category",
+      "questions": ["How do I find FAQ 2?"],
+      "answer": "Kickstarter stumptown pop-up XOXO, polaroid meditation wayfarers ennui Austin plaid. Etsy scenester viral DIY 8-bit Truffaut flexitarian PBR, banjo plaid disrupt typewriter."
+    },
+    {
+      "id": 8,
+      "category": "First Category",
+      "questions": ["How do I find FAQ 2?"],
+      "answer": "Gluten-free try-hard vinyl meggings meditation pickled. Polaroid listicle High Life wolf cronut American Apparel."
+    },
+    {
+      "id": 9,
+      "category": "First Category",
+      "questions": ["How do I find FAQ 2?"],
+      "answer": "Small batch mlkshk roof party, gentrify PBR&B blog sartorial 8-bit jean shorts tilde photo booth. +1 mustache chambray four dollar toast literally salvia, twee hoodie tote bag swag butcher Portland whatever."
+    }
+  ]
+}
