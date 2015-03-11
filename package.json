@@ -38,6 +38,7 @@
     "node-jsx": "^0.12.4",
     "react": "^0.12.2",
     "react-bootstrap": "^0.15.1",
+    "react-headroom": "^1.5.0",
     "react-router": "^0.12.4",
     "reflux": "^0.2.6"
   }
