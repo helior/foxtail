@@ -1,13 +1,15 @@
 "use strict";
 
 /* global jQuery */
-var React = require('react/addons');
+var React = require('react');
 var Headroom = require('react-headroom');
 var { Link, HistoryLocation } = require('react-router');
+var cx = require('classnames');
 
 var ButtonGroup = require('react-bootstrap').ButtonGroup;
 var Button = require('react-bootstrap').Button;
 var Glyphicon = require('react-bootstrap').Glyphicon;
+var Search = require('./search.jsx');
 
 var Header = React.createClass({
   propTypes: {
@@ -64,17 +66,16 @@ var Header = React.createClass({
   // Click handler for opening the drawer.
   handleOpenDrawer(e) {
     this.setState({activeDrawer:true});
+    this.refs.search.focusSearch();
     e.preventDefault();
   },
 
   render() {
-    var cx = React.addons.classSet;
-
     return <div className="header">
       <div id="drawer" className={cx({'drawer': true, 'active': this.state.activeDrawer})}>
         <a onClick={this.handleCloseDrawer} className="drawer-close"><Glyphicon glyph="remove" /></a>
         <div className="drawer-inner">
-          {/* Search goes here. */}
+          <Search ref="search" />
         </div>
       </div>
 
