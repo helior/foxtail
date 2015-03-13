@@ -6,7 +6,7 @@ var FaqAction = {
 };
 
 FaqAction.load.listenAndPromise(function() {
-  return Axios.get('/api/faq.json');
+  return Axios.get('http://local.foxtail.com/api/v1.0/faq', {params: {fields: 'id,questions'}});
 });
 
 module.exports = FaqAction;

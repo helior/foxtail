@@ -67,6 +67,9 @@ var Header = React.createClass({
   handleOpenDrawer(e) {
     this.setState({activeDrawer:true});
     this.refs.search.clearSearch();
+
+    // FIXME: the delayed execution is a hack, however, the textfield will not
+    // focus on an element that is not displayed on the page. I think.
     setTimeout(this.refs.search.focusSearch, 300);
     e.preventDefault();
   },
