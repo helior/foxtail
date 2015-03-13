@@ -6,9 +6,6 @@ var Action = {
 };
 
 Action.load.listenAndPromise(function() {
-  // setTimeout(function() {
-
-  // }, 1000);
   return Axios.get('/api/faq.json');
 });
 

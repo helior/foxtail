@@ -7,6 +7,7 @@ var Store = require('../stores/testStore');
 
 var TestRoute = React.createClass({
   mixins: [ Reflux.connect(Store, 'list') ],
+
   statics: {
     willTransitionTo: function(transition, params, query, callback) {
       Action.load();
