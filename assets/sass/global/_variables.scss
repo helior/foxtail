@@ -1,8 +1,10 @@
 /* Variables */
 
 /* Media Queries */
+$break-small: "320px";
 $break-medium: "768px";
 $break-large: "1024px";
 
+$breakpoint-is-small: "only screen and (max-width : #{$break-small})";
 $breakpoint-medium: "only screen and (min-width : #{$break-medium})";
 $breakpoint-large: "only screen and (min-width : #{$break-large})";

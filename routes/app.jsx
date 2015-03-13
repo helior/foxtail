@@ -26,23 +26,23 @@ var App = React.createClass({
       {
         title: 'Home',
         href: 'home',
-        subTitle: 'this should go well.'
+        icon: 'home'
       },
       {
         title: 'FAQ',
         href: 'faq',
-        subTitle: 'Frequently Answered Questions...'
+        icon: 'list'
       },
       {
-        title: 'TEST',
+        title: 'About',
         href: 'test',
-        subTitle: 'Test testy test.'
+        icon: 'heart'
       }
     ];
 
     return <div className="app">
       <Header navigation={navigation} />
-      <div className="page">
+      <div className="container">
         <RouteHandler/>
       </div>
     </div>

@@ -10,26 +10,8 @@ body {
   overflow-x: hidden;
 }
 
-.container {
-  position: relative;
-  max-width: 1125px;
-  width: 100%;
-  padding: 0 25px;
-  margin: 0 auto;
-}
-
-.small-text {
-  font-size: 14px;
-  letter-spacing: 0.1em;
-}
-
 a {
   text-decoration: none;
-  font-weight: 600;
   color: #000;
   transition: color 0.2s ease, background 0.2s ease, border 0.2s ease, opacity 0.2s ease;
-}
-
-.page {
-  margin-top:55px;
 }
