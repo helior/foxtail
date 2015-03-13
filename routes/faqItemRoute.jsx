@@ -2,12 +2,14 @@
 
 var React = require('react');
 var Reflux = require('reflux');
-var Router = require('react-router');
+var { Link, State } = require('react-router');
 var Action = require('../actions/faqItemAction');
 var Store = require('../stores/faqItemStore');
 
+var Glyphicon = require('react-bootstrap').Glyphicon
+
 var FaqItemRoute = React.createClass({
-  mixins: [ Router.State, Reflux.connect(Store, 'faq') ],
+  mixins: [ State, Reflux.connect(Store, 'faq') ],
   statics: {
     willTransitionTo: function(transition, params, query, callback) {
       Action.load(params.faqItemId);
@@ -16,8 +18,16 @@ var FaqItemRoute = React.createClass({
   },
 
   render() {
+    return this.state.faq && <div>
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h1>{this.state.faq.questions[0]}</h1>
+        </div>
+        <div className="panel-body" dangerouslySetInnerHTML={{__html: this.state.faq.answer}} />
+      </div>
 
-    return this.state.faq ? <h1>{this.state.faq.label}</h1> : <h3>Faq item: {this.getParams().faqItemId}</h3>
+      <Link to="faq" className="btn btn-default"><Glyphicon glyph="chevron-left" /> Back to FAQs</Link>
+    </div>
   }
 });
 
