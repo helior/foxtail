@@ -2,57 +2,102 @@
 
 /* global jQuery */
 var React = require('react');
+var { Navigation } = require('react-router');
 var Input = require('react-bootstrap').Input;
 
 var Search = React.createClass({
-  focusSearch() {
-    // FIXME: refs are okay, but .focus() method not working.
-    // React.findDOMNode(this.refs.searchBox.refs.input).focus(); // React 0.13.0
-    this.refs.searchBox.refs.input.getDOMNode().focus()
-    // React.findDOMNode(this.refs.searchBox.refs.input).value = 'test';
+  mixins: [ Navigation ],
+
+  /**
+   * Public method to clear the value of the search field.
+   */
+  clearSearch() {
+    this.refs.searchBox.refs.input.getDOMNode().value = '';
   },
 
-  // Un-focus from the search box (dismissing mobile keyboard) when the user is
-  // scrolling so that more real-estate is made available for the search
-  // results.
+  /**
+   * Public method to put the focus on the search field.
+   */
+  focusSearch() {
+    // React.findDOMNode(this.refs.searchBox.refs.input).focus(); // React 0.13.0
+    this.refs.searchBox.refs.input.getDOMNode().focus()
+  },
+
+  /**
+   * Un-focus from the search box (dismissing mobile keyboard) when the user is
+   * scrolling so that more real-estate is made available for the search
+   * results.
+   */
   onScroll() {
     // React.findDOMNode(this.refs.searchBox.refs.input).blur(); // React 0.13.0
     this.refs.searchBox.refs.input.getDOMNode().blur()
   },
 
+  /**
+   * "Click" handler for selecting an item from the search result list. This
+   * callback is shared across all source types, so run a switch/case against
+   * the group (data source) to know how to handle the callback.
+   *
+   * @param  {jQuery} node
+   *   jQuery object of the initialized input
+   *
+   * @param  {Element} element
+   *   DOM of the anchor element
+   *
+   * @param  {Object} obj
+   *   Javascript object of the option.source element
+   *
+   * @param  {Event} event
+   *   jQuery event that was triggered
+   */
+  handleSearchResultClick(node, element, obj, event) {
+    switch (obj.group) {
+      case 'faq':
+        this.transitionTo('/faq/' + obj.id);
+        break;
+
+      default:
+        break;
+    }
+  },
+
+  /**
+   * Callback for processing typeahead results for FAQs.
+   *
+   * We collect ALL the FAQ items and expose all question variants into a
+   * flattened list so that every keyword in a question is search-able.
+   *
+   * @param  {object} payload
+   *   The payload returned from the data source.
+   *
+   * @return {array}
+   *   A flattened list of objects containing the display string and identifier.
+   */
+  processFaqResults(payload) {
+    var data = [];
+    for (var i=0;i<payload.data.length;i++) {
+      for (var j=0;j<payload.data[i].questions.length;j++) {
+        data.push({
+          display: payload.data[i].questions[j],
+          id: payload.data[i].id
+        });
+      }
+    }
+    return data;
+  },
+
   componentDidMount() {
+    var me = this;
+
     document.addEventListener('scroll', this.onScroll, false);
+
     jQuery.typeahead({
       input: '#search',
       source: {
-          data: [
-              "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
-              "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh",
-              "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia",
-              "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burma",
-              "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad",
-              "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic", "Congo, Republic of the",
-              "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti",
-              "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador",
-              "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon",
-              "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Greenland", "Grenada", "Guatemala", "Guinea",
-              "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India",
-              "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
-              "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos",
-              "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
-              "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
-              "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Mongolia", "Morocco", "Monaco",
-              "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger",
-              "Nigeria", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru",
-              "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Samoa", "San Marino",
-              "Sao Tome", "Saudi Arabia", "Senegal", "Serbia and Montenegro", "Seychelles", "Sierra Leone",
-              "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain",
-              "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan",
-              "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey",
-              "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
-              "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "Zimbabeox",
-              "Zimpopo", "Zimma", "Zimbaox"
-          ]
+          faq: [{
+            url: 'http://local.foxtail.com/api/v1.0/faq',
+            process: me.processFaqResults
+          }],
       },
       hint: true,
       selector: {
@@ -63,6 +108,9 @@ var Search = React.createClass({
         'opacity': 0.6,
         'filter': 'alpha(opacity=60)',
         'background-color': '#ffffff'
+      },
+      callback: {
+        onClick: me.handleSearchResultClick
       }
     });
   },
@@ -86,4 +134,3 @@ var Search = React.createClass({
 });
 
 module.exports = Search;
-// Style search box

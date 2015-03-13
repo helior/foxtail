@@ -42,7 +42,7 @@ var App = React.createClass({
 
     return <div className="app">
       <Header navigation={navigation} />
-      <div className="page">
+      <div className="container">
         <RouteHandler/>
       </div>
     </div>

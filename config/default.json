@@ -2,5 +2,8 @@
   "express": {
     "port": 3001,
     "host": "local.foxtail.com"
+  },
+  "vixen": {
+    "host": "local.vixen.com"
   }
 }

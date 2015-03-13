@@ -1,9 +1,12 @@
 "use strict";
 
-var React = require('react/addons');
+var React = require('react');
 var Reflux = require('reflux');
 var FaqAction = require('../actions/faqAction');
 var FaqStore = require('../stores/faqStore');
+
+var { Link } = require('react-router');
+var ListGroup = require('react-bootstrap').ListGroup;
 
 var FaqRoute = React.createClass({
   mixins: [Reflux.connect(FaqStore, 'faq'), React.addons.PureRenderMixin],
@@ -16,17 +19,16 @@ var FaqRoute = React.createClass({
   },
 
   getFaqs() {
-    return this.state.faq.map((faq, index) =>
-      <p key={index}><a id={faq.id}>{faq.id}. {faq.answer}</a></p>
+    return this.state.faq.map(faq =>
+      <Link className="list-group-item" key={faq.id} to="faqItem" params={{faqItemId: faq.id}}>{faq.questions[0]}</Link>
     );
   },
 
   render() {
     var list = this.state.faq && this.getFaqs();
-    return <div>
-      <h1>FAQ page!</h1>
+    return <ListGroup>
       {list}
-    </div>
+    </ListGroup>
   }
 });
 

@@ -6,10 +6,7 @@ var Action = {
 };
 
 Action.load.listenAndPromise(function() {
-  // setTimeout(function() {
-
-  // }, 1000);
-  return Axios.get('/api/faq.json');
+  // return Axios.get('/api/faq.json');
 });
 
 module.exports = Action;
