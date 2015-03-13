@@ -66,7 +66,8 @@ var Header = React.createClass({
   // Click handler for opening the drawer.
   handleOpenDrawer(e) {
     this.setState({activeDrawer:true});
-    this.refs.search.focusSearch();
+    this.refs.search.clearSearch();
+    setTimeout(this.refs.search.focusSearch, 300);
     e.preventDefault();
   },
 

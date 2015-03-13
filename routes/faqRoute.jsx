@@ -1,6 +1,6 @@
 "use strict";
 
-var React = require('react/addons');
+var React = require('react');
 var Reflux = require('reflux');
 var FaqAction = require('../actions/faqAction');
 var FaqStore = require('../stores/faqStore');
@@ -17,7 +17,7 @@ var FaqRoute = React.createClass({
 
   getFaqs() {
     return this.state.faq.map((faq, index) =>
-      <p key={index}><a id={faq.id}>{faq.id}. {faq.answer}</a></p>
+      <p key={index}><a id={faq.id} name={faq.id} href={'/faq#' + faq.id}>{faq.id}. {faq.answer}</a></p>
     );
   },
 
