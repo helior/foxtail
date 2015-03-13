@@ -6,7 +6,7 @@ var Action = {
 };
 
 Action.load.listenAndPromise(function() {
-  return Axios.get('/api/faq.json');
+  // return Axios.get('/api/faq.json');
 });
 
 module.exports = Action;
