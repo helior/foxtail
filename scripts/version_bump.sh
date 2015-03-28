@@ -3,7 +3,7 @@
 GIT_USERNAME="helior"
 GIT_EMAIL="me@helior.info"
 
-ENV
+env
 if [ "$TRAVIS_BRANCH" = "dev" ] && [ ${GH_OAUTH_TOKEN:?"Github OAuth token must be set."} ]; then
   if command -v git >/dev/null 2>&1 && command -v npm >/dev/null 2>&1; then
     git config --local user.name ${GIT_USERNAME}
