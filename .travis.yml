@@ -4,6 +4,3 @@ node_js:
 before_script:
   - npm install -g gulp
 after_success: scripts/travis_after_success.sh
-env:
-  global:
-    secure: HREtLIzmlc6tEWd6BklU5sZ0MmYVBSMlG7KAArbcm4RPLzXxlGxOB9JilHEs0lga5yoi4QtmePEzKM1EF1RUZ8DQ5ANqHh90DCB1ybSDCfMUxAH8CNMc6gWC+86CrGh5YANjg3ZJ0wdYhbwdjvcd1hbBnZVeGm27dYjyMI+WGYk=
